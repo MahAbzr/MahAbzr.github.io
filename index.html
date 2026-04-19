@@ -1,156 +1,601 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mahdieh Abazar — Personal Website</title>
-  <meta name="description" content="Academic website for Mahdieh Abazar, PhD student in Software Engineering at the University of Calgary." />
-  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,700&display=swap" rel="stylesheet">
+  <title>Mahdieh Abazar</title>
+  <meta name="description" content="Mahdieh Abazar — PhD student in Software Engineering at the University of Calgary. Research on secure code generation and AI coding agents." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root, [data-theme="light"] {
-      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
-      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
-      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
-      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
-      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
-      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
-      --space-2: 0.5rem; --space-3: 0.75rem; --space-4: 1rem; --space-6: 1.5rem; --space-8: 2rem; --space-12: 3rem; --space-16: 4rem;
-      --color-bg: #f7f6f2; --color-surface: #fbfbf9; --color-surface-2: #f3f0ec; --color-border:#d4d1ca; --color-text:#28251d; --color-text-muted:#6f6c66; --color-primary:#01696f; --color-primary-hover:#0c4e54; --color-text-inverse:#f9f8f4;
-      --radius-md: 0.5rem; --radius-lg: 0.75rem; --radius-full:9999px;
-      --shadow-sm: 0 1px 2px rgba(0,0,0,.05); --shadow-md:0 12px 32px rgba(0,0,0,.08);
-      --font-body:'Satoshi', sans-serif; --font-display:'Zodiak', serif;
+    :root {
+      /* Ink (text) */
+      --ink:        #14202b;
+      --ink-soft:   #4a5a6a;
+      --ink-faint:  #8a96a2;
+
+      /* Surfaces — cool, quiet, like paper in morning light */
+      --paper:      #eef2f0;
+      --paper-2:    #e2e8e6;
+      --rule:       #c7d0cd;
+
+      /* Accent palette — drawn from Moraine Lake */
+      --teal:       #0f6b7a;   /* lake */
+      --teal-deep:  #0a4850;   /* shaded water */
+      --pine:       #2d5a4a;   /* forest */
+      --sun:        #d4a574;   /* alpenglow, used sparingly */
+
+      --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
+      --sans:  'Inter Tight', -apple-system, sans-serif;
     }
-    [data-theme="dark"] { --color-bg:#171614; --color-surface:#1c1b19; --color-surface-2:#22211f; --color-border:#393836; --color-text:#e7e4de; --color-text-muted:#a7a39b; --color-primary:#4f98a3; --color-primary-hover:#227f8b; --color-text-inverse:#171614; --shadow-sm:0 1px 2px rgba(0,0,0,.25); --shadow-md:0 12px 32px rgba(0,0,0,.35); }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;color:var(--color-text);background:var(--color-bg)}
-    a{color:inherit;text-decoration:none}
-    img,svg{display:block;max-width:100%}
-    .container{width:min(1100px,calc(100% - 2rem));margin-inline:auto}
-    header{position:sticky;top:0;background:color-mix(in srgb, var(--color-bg) 88%, transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--color-border);z-index:10}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) 0;gap:var(--space-4)}
-    .brand{display:flex;align-items:center;gap:var(--space-3);font-weight:700}
-    .brand svg{width:36px;height:36px;color:var(--color-primary)}
-    .navlinks{display:flex;gap:var(--space-4);flex-wrap:wrap}
-    .theme-btn,.btn{border:1px solid var(--color-border);background:var(--color-surface);border-radius:var(--radius-full);padding:.7rem 1rem;min-height:44px}
-    .btn.primary{background:var(--color-primary);color:var(--color-text-inverse);border-color:var(--color-primary)}
-    .btn.primary:hover{background:var(--color-primary-hover)}
-    .hero{padding:clamp(4rem,8vw,7rem) 0}
-    .eyebrow{display:inline-block;padding:.35rem .75rem;border-radius:var(--radius-full);background:var(--color-surface-2);color:var(--color-primary);font-size:var(--text-sm);margin-bottom:var(--space-4)}
-    h1,h2{font-family:var(--font-display);line-height:1.08}
-    h1{font-size:var(--text-2xl);max-width:12ch;margin-bottom:var(--space-4)}
-    .lede{max-width:64ch;color:var(--color-text-muted);margin-bottom:var(--space-6)}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--space-8);align-items:start}
-    .card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-6);box-shadow:var(--shadow-sm)}
-    .meta{display:grid;gap:var(--space-3)}
-    section{padding:var(--space-12) 0}
-    .section-title{font-size:var(--text-xl);margin-bottom:var(--space-4)}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6)}
-    ul{padding-left:1.1rem}
-    li+li{margin-top:.45rem}
-    .pub{padding:1rem 0;border-top:1px solid var(--color-border)}
-    .pub:first-child{border-top:none;padding-top:0}
-    footer{padding:var(--space-8) 0 var(--space-12);color:var(--color-text-muted)}
-    @media (max-width: 820px){.hero-grid,.grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.navlinks{width:100%}}
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--serif);
+      font-size: 24px;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      font-feature-settings: "kern", "liga", "onum";
+    }
+
+    a { color: inherit; text-decoration: none; transition: color .2s ease; }
+    a:hover { color: var(--teal); }
+
+    /* ——— Banner ——— */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: clamp(220px, 34vw, 380px);
+      overflow: hidden;
+      background: var(--paper-2);
+    }
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 55%;
+      display: block;
+      filter: saturate(0.9) contrast(0.98);
+    }
+    .banner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 55%,
+        rgba(238, 242, 240, 0.25) 80%,
+        var(--paper) 100%
+      );
+      pointer-events: none;
+    }
+    .banner-caption {
+      position: absolute;
+      bottom: 14px;
+      right: clamp(1rem, 3vw, 2rem);
+      font-family: var(--sans);
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.88);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.45);
+      font-weight: 500;
+    }
+    .banner-caption::before {
+      content: "▲ ";
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0;
+    }
+
+    /* ——— Layout ——— */
+    .page {
+      max-width: 1024px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vw, 4rem) clamp(1.5rem, 5vw, 2.5rem) 6rem;
+    }
+
+    /* ——— Marginalia section labels ——— */
+    .section {
+      position: relative;
+      padding-top: 4rem;
+      margin-top: 4rem;
+      border-top: 1px solid var(--rule);
+    }
+    .section:first-of-type { border-top: none; margin-top: 0; padding-top: 0; }
+
+    .section-label {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+    }
+    .section-label::before {
+      content: attr(data-num);
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--teal);
+    }
+
+    /* ——— Header / identity ——— */
+    .identity { margin-bottom: 2.5rem; }
+    .name {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2.7rem, 6.5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.5rem;
+    }
+    .name em {
+      font-style: italic;
+      color: var(--teal-deep);
+      font-weight: 400;
+    }
+    .tagline {
+      font-family: var(--sans);
+      font-size: 15px;
+      color: var(--ink-soft);
+      letter-spacing: 0.01em;
+    }
+    .tagline .sep {
+      color: var(--ink-faint);
+      margin: 0 0.5rem;
+    }
+    .tagline .here {
+      color: var(--pine);
+      font-weight: 500;
+    }
+
+    /* ——— Social links (under name) ——— */
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.1rem;
+    }
+    .socials a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--sans);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: var(--ink-soft);
+      padding: 0.5rem 0.85rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      background: transparent;
+      transition: color .2s ease, border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .socials a:hover {
+      color: var(--teal);
+      border-color: var(--teal);
+      background: color-mix(in srgb, var(--teal) 6%, transparent);
+      transform: translateY(-1px);
+    }
+    .socials svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      stroke-width: 1.75;
+    }
+
+    /* ——— Lede ——— */
+    .lede {
+      font-size: clamp(1.7rem, 2.4vw, 1.7rem);
+      line-height: 1.5;
+      color: var(--ink);
+      max-width: 40ch;
+      margin-bottom: 2rem;
+    }
+    .lede em {
+      color: var(--teal-deep);
+      font-style: italic;
+    }
+
+    /* ——— Inline nav ——— */
+    .topnav {
+      font-family: var(--sans);
+      font-size: 18px;
+      letter-spacing: 0.02em;
+      color: var(--ink-soft);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-top: 1px solid var(--rule);
+    }
+    .topnav a { position: relative; }
+    .topnav a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -3px;
+      height: 1px;
+      background: var(--teal);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .25s ease;
+    }
+    .topnav a:hover { color: var(--teal); }
+    .topnav a:hover::after { transform: scaleX(1); }
+
+    /* ——— Headings inside sections ——— */
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1.75rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ——— Prose ——— */
+    .prose p + p { margin-top: 1rem; }
+    .prose { color: var(--ink); }
+    .prose a {
+      color: var(--teal);
+      border-bottom: 1px solid color-mix(in srgb, var(--teal) 35%, transparent);
+      padding-bottom: 1px;
+    }
+    .prose a:hover { border-bottom-color: var(--teal); }
+
+    /* ——— Definition lists (Education) ——— */
+    dl.facts {
+      display: grid;
+      grid-template-columns: 10rem 1fr;
+      gap: 0.7rem 1.5rem;
+      font-family: var(--sans);
+      font-size: 22px;
+      line-height: 1.5;
+    }
+    dl.facts dt {
+      color: var(--teal);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    dl.facts dd { color: var(--ink); }
+    dl.facts dd .muted {
+      color: var(--ink-soft);
+      font-size: 18px;
+    }
+    @media (max-width: 520px) {
+      dl.facts { grid-template-columns: 1fr; gap: 0.15rem 0; }
+      dl.facts dt { margin-top: 0.9rem; }
+      dl.facts dt:first-of-type { margin-top: 0; }
+    }
+
+    /* ——— Research entries ——— */
+    .research-item {
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      border-left: 2px solid var(--rule);
+      transition: border-color .25s ease;
+    }
+    .research-item:hover { border-left-color: var(--teal); }
+    .research-item:last-child { margin-bottom: 0; }
+    .research-item h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      font-size: 1.7rem;
+      font-style: italic;
+      margin-bottom: 0.4rem;
+      color: var(--teal-deep);
+    }
+    .research-item p {
+      color: var(--ink-soft);
+      font-size: 1.3rem;
+    }
+
+    /* ——— Publications ——— */
+    .pubs { list-style: none; }
+    .pubs li {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 3.5rem 1fr;
+      gap: 1.25rem;
+      align-items: baseline;
+    }
+    .pubs li:last-child { border-bottom: none; }
+    .pubs .year {
+      font-family: var(--sans);
+      font-size: 18px;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+      font-weight: 600;
+      padding-top: 2px;
+    }
+    .pubs .title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      line-height: 1.4;
+      color: var(--ink);
+    }
+    .pubs .venue {
+      display: block;
+      font-family: var(--sans);
+      font-size: 15.5px;
+      color: var(--ink-soft);
+      margin-top: 0.35rem;
+      font-style: normal;
+    }
+    .pubs .status {
+      font-family: var(--sans);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #8a5a2a;
+      background: color-mix(in srgb, var(--sun) 30%, transparent);
+      padding: 2px 7px;
+      border-radius: 3px;
+      margin-left: 0.5rem;
+      vertical-align: 2px;
+      font-weight: 600;
+    }
+    @media (max-width: 520px) {
+      .pubs li { grid-template-columns: 1fr; gap: 0.25rem; }
+    }
+
+    .scholar-note {
+      font-family: var(--sans);
+      font-size: 18px;
+      color: var(--ink-soft);
+      margin-top: 1.5rem;
+    }
+    .scholar-note a {
+      color: var(--teal);
+      border-bottom: 1px solid color-mix(in srgb, var(--teal) 35%, transparent);
+      padding-bottom: 1px;
+    }
+
+    /* ——— Contact links ——— */
+    .contact-links {
+      font-family: var(--sans);
+      font-size: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      margin-top: 0.5rem;
+    }
+    .contact-links a {
+      position: relative;
+      padding-bottom: 2px;
+      border-bottom: 1px solid var(--ink-faint);
+      transition: border-color .2s ease, color .2s ease;
+    }
+    .contact-links a:hover {
+      color: var(--teal);
+      border-bottom-color: var(--teal);
+    }
+
+    /* ——— Footer / colophon ——— */
+    footer {
+      margin-top: 5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 13px;
+      color: var(--ink-faint);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    /* ——— Subtle entrance ——— */
+    @media (prefers-reduced-motion: no-preference) {
+      .fade-in > * {
+        opacity: 0;
+        transform: translateY(6px);
+        animation: rise .7s ease forwards;
+      }
+      .fade-in > *:nth-child(1) { animation-delay: .1s; }
+      .fade-in > *:nth-child(2) { animation-delay: .2s; }
+      .fade-in > *:nth-child(3) { animation-delay: .3s; }
+      .fade-in > *:nth-child(4) { animation-delay: .4s; }
+      @keyframes rise {
+        to { opacity: 1; transform: none; }
+      }
+      .banner img {
+        opacity: 0;
+        animation: bannerFade 1.2s ease forwards;
+      }
+      @keyframes bannerFade {
+        to { opacity: 1; }
+      }
+    }
+
+    ::selection { background: color-mix(in srgb, var(--teal) 25%, transparent); color: var(--ink); }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <svg viewBox="0 0 64 64" fill="none" aria-label="Mahdieh Abazar logo" role="img">
-          <rect x="8" y="8" width="48" height="48" rx="16" stroke="currentColor" stroke-width="4"></rect>
-          <path d="M20 42L32 20L44 42" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
-          <path d="M25 34H39" stroke="currentColor" stroke-width="4" stroke-linecap="round"></path>
-        </svg>
-        <span>Mahdieh Abazar</span>
-      </div>
-      <nav class="navlinks" aria-label="Primary">
-        <a href="#about">About</a>
-        <a href="#research">Research</a>
-        <a href="#publications">Publications</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="theme-btn" data-theme-toggle aria-label="Switch theme">◐</button>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="eyebrow">PhD Student · Software Engineering · University of Calgary</span>
-          <h1>Secure code generation for trustworthy AI-assisted software development</h1>
-          <p class="lede">Mahdieh Abazar is a PhD student in Software Engineering at the University of Calgary. Her research focuses on secure code generation, AI and LLM safety, software security, and empirical analysis of coding agents.</p>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap">
-            <a class="btn primary" href="https://scholar.google.com/citations?user=BU8OTIoAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-            <a class="btn" href="https://www.linkedin.com/in/mahdie-abazar" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          </div>
-        </div>
-        <aside class="card meta">
-          <div><strong>Research areas</strong><br><span style="color:var(--color-text-muted)">Secure Code Generation, AI/LLM Safety, Software Security</span></div>
-          <div><strong>Current program</strong><br><span style="color:var(--color-text-muted)">PhD in Software Engineering, University of Calgary</span></div>
-          <div><strong>Email</strong><br><a href="mailto:mahdieh.abazar@ucalgary.ca">mahdieh.abazar@ucalgary.ca</a></div>
-          <div><strong>Location</strong><br><span style="color:var(--color-text-muted)">Calgary, Alberta, Canada</span></div>
-        </aside>
+  <div class="banner" role="img" aria-label="Moraine Lake, Banff National Park — turquoise alpine lake surrounded by mountain peaks">
+    <img
+      src="banff.jpg"
+      alt="Moraine Lake in Banff National Park, Alberta"
+      loading="eager"
+    />
+    <span class="banner-caption">Moraine Lake, Banff</span>
+  </div>
+
+  <main class="page">
+
+    <header class="identity fade-in">
+      <h1 class="name">Mahdieh <em>Abazar</em></h1>
+      <p class="tagline">
+        PhD, Software Engineering
+        <span class="sep">·</span>
+        <span class="here">University of Calgary</span>
+      </p>
+      <div class="socials">
+        <a href="mailto:mahdieh.abazar@ucalgary.ca" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="m3 7 9 6 9-6"/>
+          </svg>
+          <span>Email</span>
+        </a>
+        <a href="https://scholar.google.com/citations?user=BU8OTIoAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3 2 9l10 6 10-6-10-6Z"/>
+            <path d="M6 12v4c0 1.5 2.7 3 6 3s6-1.5 6-3v-4"/>
+            <path d="M22 9v6"/>
+          </svg>
+          <span>Google Scholar</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mahdie-abazar" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.22 8h4.56v14H.22V8Zm7.5 0h4.37v1.92h.06c.61-1.15 2.1-2.37 4.32-2.37 4.62 0 5.47 3.04 5.47 7V22h-4.56v-6.2c0-1.48-.03-3.38-2.06-3.38-2.06 0-2.38 1.6-2.38 3.27V22H7.72V8Z"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+      </div>
+    </header>
+
+    <p class="lede fade-in">
+      I study how AI coding agents write, rewrite, and sometimes quietly break code with a focus on <em>security.</em>
+    </p>
+
+    <nav class="topnav fade-in" aria-label="Primary">
+      <a href="#research">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#education">Education</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about" class="section">
+      <div class="section-label" data-num="§ 01">About</div>
+      <div class="prose">
+        <p>
+          I&rsquo;m a PhD student in Software Engineering at the University of Calgary,
+          advised by Dr.&nbsp;Benjamin Tan and Dr.&nbsp;Lorenzo De Carli. My research
+          looks at AI-assisted software development from a security angle: what happens
+          when large language models generate code that looks right but isn&rsquo;t.
+        </p>
+        <p>
+          Before Calgary, I worked on steganalysis and malware detection at Shiraz
+          University, which is where I developed a taste for problems that live at the
+          edge between machine learning and adversarial behavior.
+        </p>
       </div>
     </section>
 
-    <section id="about">
-      <div class="container grid">
-        <div>
-          <h2 class="section-title">About</h2>
-          <p>Her work investigates how large language models and AI coding agents behave in software engineering tasks, with emphasis on security, reliability, and developer trust. She brings a background in secure computing, steganalysis, and malware detection to current research on AI-assisted programming.</p>
-        </div>
-        <div class="card">
-          <h2 class="section-title" style="font-size:var(--text-lg);font-family:var(--font-body)">Education</h2>
-          <ul>
-            <li>PhD in Software Engineering, University of Calgary</li>
-            <li>MSc in Computer Engineering (Secure Computing), Shiraz University</li>
-            <li>BSc in Computer Engineering (Software Engineering), Persian Gulf University</li>
-          </ul>
-        </div>
+    <section id="research" class="section">
+      <div class="section-label" data-num="§ 02">Research</div>
+      <div class="research-item">
+        <h3>Secure code generation</h3>
+        <p>Category-aware retrieval and prompting strategies for LLMs producing security-sensitive code.</p>
+      </div>
+      <div class="research-item">
+        <h3>Behavior of coding agents</h3>
+        <p>Empirical analysis of how agents edit, rewrite, and repeat themselves across software engineering tasks.</p>
+      </div>
+      <div class="research-item">
+        <h3>Information security &amp; steganalysis</h3>
+        <p>Ensemble methods and entropy-based features for detecting hidden information and malicious binaries.</p>
       </div>
     </section>
 
-    <section id="research">
-      <div class="container">
-        <h2 class="section-title">Research</h2>
-        <div class="grid">
-          <div class="card"><strong>Secure Code Generation</strong><p style="color:var(--color-text-muted);margin-top:.6rem">Evaluating and improving the reliability of AI-generated code in security-sensitive development settings.</p></div>
-          <div class="card"><strong>LLM and Agent Behavior</strong><p style="color:var(--color-text-muted);margin-top:.6rem">Studying edit patterns, rewriting behavior, repetition, and failure modes in coding agents.</p></div>
-        </div>
+    <section id="publications" class="section">
+      <div class="section-label" data-num="§ 03">Selected publications</div>
+      <ol class="pubs">
+        <li>
+          <span class="year">2026</span>
+          <span>
+            <span class="title">CAT-RAG: Security Category-Aware Retrieval-Augmented Code Generation<span class="status">Submitted</span></span>
+            <span class="venue">with B. Tan, L. De Carli — ACM CCS 2026</span>
+          </span>
+        </li>
+        <li>
+          <span class="year">2026</span>
+          <span>
+            <span class="title">Behavioral analysis of AI code generation agents: edit, rewrite, and repetition</span>
+            <span class="venue">with R. Farahmand, G. Ginde, B. Tan, L. De Carli — MSR Mining Challenge Track</span>
+          </span>
+        </li>
+        <li>
+          <span class="year">2025</span>
+          <span>
+            <span class="title">Multiscale and Kolmogorov entropies as effective features for malware detection</span>
+            <span class="venue">with F. Manavi, M. Altulyan, M. Ayari, R. Boostani — Journal of Computer Virology and Hacking Techniques, 21(1)</span>
+          </span>
+        </li>
+        <li>
+          <span class="year">2022</span>
+          <span>
+            <span class="title">A binary relevance adaptive model-selection for ensemble steganalysis</span>
+            <span class="venue">with P. Masjedi, M. Taheri — ISeCure, 14(1), extended version</span>
+          </span>
+        </li>
+        <li>
+          <span class="year">2021</span>
+          <span>
+            <span class="title">An analysis of deep steganography and steganalysis</span>
+            <span class="venue">with P. Masjedi, A. Ghorbani, M. Taheri, S. M. FakhrAhmad — in <i>Advanced Security Solutions for Multimedia</i>, IOP Publishing</span>
+          </span>
+        </li>
+        <li>
+          <span class="year">2020</span>
+          <span>
+            <span class="title">An efficient ensemble of convolutional deep steganalysis based on clustering</span>
+            <span class="venue">with P. Masjedi, M. Taheri — ICWR 2020, IEEE</span>
+          </span>
+        </li>
+      </ol>
+      <p class="scholar-note">
+        Full list on <a href="https://scholar.google.com/citations?user=BU8OTIoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>.
+      </p>
+    </section>
+
+    <section id="education" class="section">
+      <div class="section-label" data-num="§ 04">Education</div>
+      <dl class="facts">
+        <dt>Current</dt>
+        <dd>PhD, Software Engineering <span class="muted">· University of Calgary</span></dd>
+        <dt>2017 — 2020</dt>
+        <dd>MSc, Computer Engineering (Secure Computing) <span class="muted">· Shiraz University</span></dd>
+        <dt>2012 — 2016</dt>
+        <dd>BSc, Computer Engineering (Software Engineering) <span class="muted">· Persian Gulf University</span></dd>
+      </dl>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="section-label" data-num="§ 05">Contact</div>
+      <p class="prose" style="margin-bottom: 1rem;">
+        Happy to hear about collaborations, reading recommendations, or anything at the intersection of AI and security.
+      </p>
+      <div class="contact-links">
+        <a href="mailto:mahdieh.abazar@ucalgary.ca">mahdieh.abazar@ucalgary.ca</a>
+        <a href="https://scholar.google.com/citations?user=BU8OTIoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://www.linkedin.com/in/mahdie-abazar" target="_blank" rel="noopener">LinkedIn</a>
       </div>
     </section>
 
-    <section id="publications">
-      <div class="container">
-        <h2 class="section-title">Selected publications</h2>
-        <div class="card">
-          <div class="pub"><strong>2026 submitted.</strong> CAT-RAG: Security Category-Aware Retrieval-Augmented Code Generation.</div>
-          <div class="pub"><strong>2026.</strong> Behavioral analysis of AI code generation agents: Edit, rewrite, and repetition.</div>
-          <div class="pub"><strong>2025.</strong> Multiscale and Kolmogorov entropies as effective features for malware detection.</div>
-          <div class="pub"><strong>2022.</strong> A Binary Relevance Adaptive Model-Selection for Ensemble Steganalysis.</div>
-          <div class="pub"><strong>2021.</strong> An analysis of deep steganography and steganalysis.</div>
-        </div>
-      </div>
-    </section>
+    <footer>
+      <span>Calgary, Alberta</span>
+      <span>Last updated <time datetime="2026-04">April 2026</time></span>
+    </footer>
 
-    <section id="contact">
-      <div class="container card">
-        <h2 class="section-title">Contact</h2>
-        <p class="lede" style="margin-bottom:1rem">For research collaboration, academic inquiries, or speaking opportunities, please get in touch by email.</p>
-        <a class="btn primary" href="mailto:mahdieh.abazar@ucalgary.ca">Email Mahdieh</a>
-      </div>
-    </section>
   </main>
-
-  <footer>
-    <div class="container">Built for GitHub Pages. Suggested URL: <strong>https://mahdieh-abazar.github.io</strong></div>
-  </footer>
-
-  <script>
-    (function(){const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;let d=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';r.setAttribute('data-theme',d);t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);});})();
-  </script>
 </body>
 </html>
